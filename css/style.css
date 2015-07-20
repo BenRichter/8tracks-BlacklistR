@@ -1,0 +1,17 @@
+a.black {
+    display: block;
+    float: right;
+    border: 0 none;
+    color: #aaa;
+    font-size: 40px;
+    line-height: 12px;
+    text-decoration: none;
+    margin-left: 10px;
+}
+
+#now_playing a.black {
+    margin-top: 4px;
+    font-size: 36px;
+    color: #999;
+}
+

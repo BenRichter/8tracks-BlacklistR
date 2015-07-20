@@ -1,8 +1,8 @@
 {
-    "name": "Skip tracks - 8tracks",
+    "name": "8tracks - Blacklist",
     "version": "0.0.1",
     "manifest_version": 2,
-    "description": "This is not an official extension by the 8tracks Inc. Adds skip Button to 8tracks.com and automatically skip these tracks in every playlist",
+    "description": "This is not an official extension by the 8tracks Inc. Adds a Button to the player of 8tracks.com to blacklist and always skip this track",
     "homepage_url": "https://github.com/BenRichter",
     "icons": {
         "16": "icons/icon16.png",
@@ -16,11 +16,12 @@
         ],
         "persistent": true
     },
-    "options_page": "index.html",
+    "options_page": "options.html",
     "content_scripts": [
         {
             "matches": ["http://8tracks.com/*", "https://8tracks.com/*"],
-            "js": ["js/jquery.min.js","js/inject.js"]
+            "js": ["js/jquery.min.js","js/inject.js"],
+            "css": ["css/style.css"]
         }
     ],
     "permissions": [
