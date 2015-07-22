@@ -1,17 +1,18 @@
-a.black {
+#now_playing a.black {
+    text-decoration: none;
     display: block;
     float: right;
     border: 0 none;
-    color: #aaa;
-    font-size: 40px;
+    margin-left: 5px;
+
     line-height: 12px;
-    text-decoration: none;
-    margin-left: 10px;
-}
-
-#now_playing a.black {
-    margin-top: 4px;
-    font-size: 36px;
+    font-size: 28px;
+    margin-top: 6px;
     color: #999;
+
 }
 
+#now_playing a.black:hover {  text-decoration: none; color: #666;}
+#now_playing a.black.active { color: #222; }
+#now_playing a.fav { margin-left: 5px; }
+#now_playing li.track .amazon { margin-right: 46px !important; }

@@ -1,6 +1,4 @@
 // content.js
-console.log("Skip Tracks - 8tracks is here...");
-
 jQuery(function($) {
 
     // Do on song loading    (stops after jquery fail ??)
@@ -14,20 +12,20 @@ jQuery(function($) {
 //    });
 
 
-    var $favLink;
+    var $player;  // #player #now_playing
+    var $favLink; // #player #now_playing a.fav
+
     var trackID = 0;
     // check every 2 second for new song
     window.setInterval(function(){
-        $favLink = $("#player #now_playing a.fav");
+        $player = $("#player #now_playing");
+        $favLink = $player.find("a.fav");
 
         if(trackID !== $favLink.data("track_id")){
             trackID = $favLink.data("track_id");
             addButton();
-            console.log("new track");
+            blacklistSong();
         }
-
-        console.log(trackID);
-
     }, 2000);
 
 
@@ -35,12 +33,11 @@ jQuery(function($) {
      *  add the blacklist button
      */
     function addButton (){
-        $favLink.after('<a href="/toggle_black" class="black inactive" data-method="post" data-track_id="' + trackID + '" title="Add this track to your blacklist">' +
+        $favLink.after('<a href="" class="black" data-method="post" data-track_id="' + trackID + '" title="Add this track to your blacklist">' +
                             '<span class="i-x"></span>' +
                         '</a>');
 
        // trackID
-
     }
 
     /**
@@ -53,12 +50,21 @@ jQuery(function($) {
     }
 
 
-
-
     /**
      * put song on blacklist
      */
     function blacklistSong(){
+        $player.find("a.black").on("click", function(ev){
+            ev.preventDefault();
+
+
+
+
+            $('#player_skip_button').click();
+           // TODO: check for next_mix_button if three times skipped
+
+            $(this).toggleClass('active');
+        });
 
         // listen to button skip
 
