@@ -16,28 +16,44 @@ jQuery(function($) {
     var $favLink; // #player #now_playing a.fav
 
     var trackID = 0;
-    // check every 2 second for new song
+    var artistName = "";
+    var blacklist = [[],[]]; // trackIDs, artistNames
+
+    /**
+     * MAIN-pulse
+     * check every 2 second for new song
+     */
     window.setInterval(function(){
         $player = $("#player #now_playing");
         $favLink = $player.find("a.fav");
 
         if(trackID !== $favLink.data("track_id")){
             trackID = $favLink.data("track_id");
+
+            checkOnList();
             addButton();
-            blacklistSong();
+
+
         }
     }, 2000);
 
 
     /**
-     *  add the blacklist button
+     *  add button and listener
      */
     function addButton (){
-        $favLink.after('<a href="" class="black" data-method="post" data-track_id="' + trackID + '" title="Add this track to your blacklist">' +
+        $favLink.after('<a href="javascript:void(0)" class="black" data-method="post" data-track_id="' + trackID + '" title="Add this track to your blacklist">' +
                             '<span class="i-x"></span>' +
                         '</a>');
 
-       // trackID
+        $player.find("a.black").on("click", function(ev){
+            ev.preventDefault();
+
+            $(this).addClass('active').unbind();
+
+            blacklistSong(trackID);
+            skipSong();
+        });
     }
 
     /**
@@ -45,31 +61,39 @@ jQuery(function($) {
      */
     function checkOnList (){
 
+        chrome.storage.sync.get(['list'], function(result){
+            blacklist = result.list;
 
-        // set button active
-    }
+            // console.log(blacklist);
+            if(blacklist[0] === undefined){
+                blacklist = [[],[]];
+            }
+            // console.log("get blacklist: " + result.list);
 
+            if( blacklist[0].indexOf(trackID) > -1 ){
+                skipSong();
+            }
 
-    /**
-     * put song on blacklist
-     */
-    function blacklistSong(){
-        $player.find("a.black").on("click", function(ev){
-            ev.preventDefault();
-
-
-
-
-            $('#player_skip_button').click();
-           // TODO: check for next_mix_button if three times skipped
-
-            $(this).toggleClass('active');
         });
 
-        // listen to button skip
+    }
 
-        // set active
+    /**
+     *  save song to blacklist in chrome synched API
+     */
+    function blacklistSong(currentTrackID){
 
+        artistName = $player.find(".title_artist .t").text();
+        artistName += " - " + $player.find(".title_artist .a").text();
+
+        blacklist[0].push(currentTrackID);
+        blacklist[1].push(artistName);
+        
+        // console.log("blacklist " + blacklist);
+
+        chrome.storage.sync.set({'list': blacklist}, function() {
+            // console.log("save setting: " + blacklist);
+        });
     }
 
     /**
@@ -77,15 +101,14 @@ jQuery(function($) {
      */
     function skipSong(){
 
+        $('#player_skip_button').click();
+        // TODO: check for next_mix_button if three times skipped
 
     }
-
-
-       // $('#now_playing li.track').prepend('<a class="skip" href="/skip-dat"><span class="i-favorite"></span></a>');
-
 
 });
 
 
 
 // GET https://api.soundcloud.com/tracks/6074695/stream?client_id=3904229f42df3999df223f6ebf39a8fe
+// chrome.storage.sync.remove(['list']);

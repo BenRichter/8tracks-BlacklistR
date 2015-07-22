@@ -1,6 +1,6 @@
 {
     "name": "8tracks - BlacklistR",
-    "version": "0.0.1",
+    "version": "0.1.2",
     "manifest_version": 2,
     "description": "This is not an official extension by the 8tracks Inc. Adds a Button to the player of 8tracks.com to blacklist and always skip this track",
     "homepage_url": "https://github.com/BenRichter",
@@ -10,12 +10,6 @@
         "128": "icons/icon128.png"
     },
     "default_locale": "en",
-    "background": {
-        "scripts": [
-            "js/background.js"
-        ],
-        "persistent": true
-    },
     "options_page": "options.html",
     "content_scripts": [
         {
@@ -24,7 +18,5 @@
             "css": ["css/style.css"]
         }
     ],
-    "permissions": [
-        "activeTab"
-    ]
+    "permissions": [ "storage" ]
 }
