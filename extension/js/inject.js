@@ -27,12 +27,10 @@ jQuery(function($) {
         $favLink = $player.find("a.fav");
 
         if(trackID !== $favLink.data("track_id")){
-            trackID = $favLink.data("track_id");
+           trackID =   $favLink.data("track_id");
 
             checkOnList();
-            addButton();
-
-
+            addButton();            
         }
     }, 2000);
 
@@ -51,7 +49,6 @@ jQuery(function($) {
             $(this).addClass('active').unbind();
 
             blacklistSong(trackID);
-            skipSong();
         });
     }
 
@@ -65,17 +62,20 @@ jQuery(function($) {
             
             //console.log("get blacklist array");
             //console.log(blacklist);
-            
+            //
+            // first init if empty
             if(blacklist === undefined){
                 blacklist = [[],[]];
+                chrome.storage.sync.set({'list': blacklist}, function(){});
             }
             
             //console.log("blacklist after undefined check: ");
             //console.log(blacklist);
 
+            console.log("Song mit ID " + trackID + " check against :D");
+            console.log(blacklist);
             if( blacklist[0].indexOf(trackID) > -1 ){
-                console.log("Song mit ID " + trackID + " geblockt :D");
-                console.log(blacklist);
+                
                 
                 skipSong();
             }
@@ -96,7 +96,9 @@ jQuery(function($) {
         blacklist[1].push(artistName);
         
         // console.log("blacklist " + blacklist);
-        chrome.storage.sync.set({'list': blacklist});
+        chrome.storage.sync.set({'list': blacklist}, function() {
+            skipSong();
+        });
     }
 
     /**
