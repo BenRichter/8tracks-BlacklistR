@@ -16,8 +16,7 @@ jQuery(function($) {
     var $favLink; // #player #now_playing a.fav
 
     var trackID = 0;
-    var artistName = "";
-    var blacklist = [[],[]]; // trackIDs, artistNames
+    var blacklist = [[],[]]; // [trackIDs],[Song - Artist]
 
     /**
      * MAIN-pulse
@@ -90,7 +89,7 @@ jQuery(function($) {
      */
     function blacklistSong(currentTrackID){
 
-        artistName = $player.find(".title_artist .t").text();
+        var artistName = $player.find(".title_artist .t").text();
         artistName += " - " + $player.find(".title_artist .a").text();
 
         blacklist[0].push(currentTrackID);
