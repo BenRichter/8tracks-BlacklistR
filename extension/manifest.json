@@ -3,7 +3,7 @@
     "version": "0.1.2",
     "manifest_version": 2,
     "description": "This is not an official extension by the 8tracks Inc. Adds a Button to the player of 8tracks.com to blacklist and always skip this track",
-    "homepage_url": "https://github.com/BenRichter",
+    "homepage_url": "https://github.com/BenRichter/8tracks-BlacklistR",
     "icons": {
         "16": "icons/icon16.png",
         "48": "icons/icon48.png",
