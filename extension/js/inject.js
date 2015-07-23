@@ -53,30 +53,21 @@ jQuery(function($) {
     }
 
     /**
-     * check current song if on List
+     * check current song if on List, true: skip
      */
     function checkOnList (){
 
         chrome.storage.sync.get(['list'], function(result){
             blacklist = result.list;
-            
-            //console.log("get blacklist array");
-            //console.log(blacklist);
-            //
+
             // first init if empty
             if(blacklist === undefined){
                 blacklist = [[],[]];
                 chrome.storage.sync.set({'list': blacklist}, function(){});
             }
-            
-            //console.log("blacklist after undefined check: ");
-            //console.log(blacklist);
 
-            console.log("Song mit ID " + trackID + " check against :D");
-            console.log(blacklist);
             if( blacklist[0].indexOf(trackID) > -1 ){
-                
-                
+                console.log("skipped song " + trackID);
                 skipSong();
             }
 
@@ -85,7 +76,7 @@ jQuery(function($) {
     }
 
     /**
-     *  save song to blacklist in chrome synched API
+     *  save song to blacklist in chrome synched API and skip
      */
     function blacklistSong(currentTrackID){
 
@@ -94,8 +85,7 @@ jQuery(function($) {
 
         blacklist[0].push(currentTrackID);
         blacklist[1].push(artistName);
-        
-        // console.log("blacklist " + blacklist);
+
         chrome.storage.sync.set({'list': blacklist}, function() {
             skipSong();
         });
@@ -112,8 +102,3 @@ jQuery(function($) {
     }
 
 });
-
-
-
-// GET https://api.soundcloud.com/tracks/6074695/stream?client_id=3904229f42df3999df223f6ebf39a8fe
-// chrome.storage.sync.remove(['list']);
