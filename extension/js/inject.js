@@ -63,14 +63,21 @@ jQuery(function($) {
 
         chrome.storage.sync.get(['list'], function(result){
             blacklist = result.list;
-
-            // console.log(blacklist);
-            if(blacklist[0] === undefined){
+            
+            //console.log("get blacklist array");
+            //console.log(blacklist);
+            
+            if(blacklist === undefined){
                 blacklist = [[],[]];
             }
-            // console.log("get blacklist: " + result.list);
+            
+            //console.log("blacklist after undefined check: ");
+            //console.log(blacklist);
 
             if( blacklist[0].indexOf(trackID) > -1 ){
+                console.log("Song mit ID " + trackID + " geblockt :D");
+                console.log(blacklist);
+                
                 skipSong();
             }
 
@@ -90,10 +97,7 @@ jQuery(function($) {
         blacklist[1].push(artistName);
         
         // console.log("blacklist " + blacklist);
-
-        chrome.storage.sync.set({'list': blacklist}, function() {
-            // console.log("save setting: " + blacklist);
-        });
+        chrome.storage.sync.set({'list': blacklist});
     }
 
     /**

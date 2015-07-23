@@ -14,17 +14,24 @@ function loadList(){
 
         if(blacklist === undefined){
             blacklist = [[],[]];
+            
+            
+        }else {
+            $list.html("");
+        }      
+        
+        var blackLength = blacklist[0].length;
+
+        if(blackLength.length !== 0){
+            
+            for (var i = 0; i < blackLength; i++) {
+                $list.append('<li><a href="#" data-array_nbr="' + i +'" >'+ blacklist[1][i] +'</a></li>');
+            }   
+            
+            $('a').on("click", function(){
+                removeSong($(this).data("array_nbr"));
+            });
         }
-
-        $list.html("");
-        for (var i = 0; i < blacklist[0].length; i++) {
-            $list.append('<li><a href="#" data-array_nbr="' + i +'" >'+ blacklist[1][i] +'</a></li>');
-        }
-
-        $('a').on("click", function(){
-            removeSong($(this).data("array_nbr"));
-        });
-
 
     });
 }
