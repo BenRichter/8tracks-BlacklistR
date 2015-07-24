@@ -1,7 +1,7 @@
 # 8tracks - BlacklistR
 Adds an X-Button to the player of 8tracks.com to put songs on a blacklist and skip these always.
 <p align="center">
-  <img src="https://github.com/BenRichter/skip8tracks/blob/master/img-readme/preview1.png" alt="Screenshot added Button"/>
+  <img src="https://github.com/BenRichter/skip8tracks/blob/master/img-readme/preview1.jpg" alt="Screenshot added Button"/>
 </p>
 
 Enable Tracks again in the extension-options.
