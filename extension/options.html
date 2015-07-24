@@ -5,28 +5,53 @@
 </head>
 <body>
 <style>
-    html { background-color: #122c4b; }
-    body { margin: 20px; color: #EAEAEA }
+    body { color: #454545; font-size: 14px; line-height: 18px; margin: 0;}
+    #header {
+        background: #122C4B;
+        position: relative;
+        width: 100%;
+    }
+    #header .wrapper {
+        height: 30px;
+        padding: 10px 20px;
+    }
+    #header h1{
+        font-size: 16px;
+        color: #FFF;
+    }
+    .wrapper {   
+        width: 90%;
+        max-width: 600px;
+        margin: 0 auto;
+        position: relative;
+        padding: 20px 20px 40px 20px;
+    }
+    
     ul {
         list-style-type: none;
         margin: 20px 0 0;
-        padding: 0 30px 0 0;
-        border: 1px solid #54667c;
-        display: inline-block;
+        padding: 10px 0 0 0;
+        border-top: 1px solid #DDD;
     }
-    ul li { color: #d1d3d3; font-size: 16px; margin: 10px 15px; }
-    ul li a { color: #EAEAEA;  text-decoration: none; }
-    ul li a:hover { color: #54667c; text-decoration: line-through;}
-    ul li a.link:hover { color: #EAEAEA; text-decoration: underline;}
+    
+    ul li { color: #8a8a8a; font-size: 16px; margin: 10px 0;font-weight: bold; }
+    ul li a { color: #8a8a8a;  text-decoration: none;   transition: all 0.3s; }
+    ul li a:hover { color: #454545; text-decoration: line-through;}
+    ul li a.link { color: #5490D7;}
+    ul li a.link:hover { text-decoration: underline;}
 
 </style>
+<div id="header">
+    <div class="wrapper"><h1>8tracks - Blacklist Options</h1></div>
+</div>
+<div class="wrapper">
+    <p>Enable tracks again. Click and remove them from your blacklist. </p>
+    <ul style="display: none;">
+        <li>Music enthusiast! You find beauty in every song ;)</li>
+        <li>No tracks blocked yet on <a class="link" href="http://8tracks.com/">8tracks.com</a>...</li>
+    </ul></div>
 
-<h1>8tracks - Blacklist Options</h1>
-<p>Enable tracks again. Click and remove them from your blacklist. </p>
-<ul style="display: none;">
-    <li>Music enthusiast! You find beauty in every song ;)</li>
-    <li>No tracks blocked yet on <a class="link" href="http://8tracks.com/">8tracks.com</a>...</li>
-</ul>
+
 
 
 <script src="js/jquery.min.js"></script>
