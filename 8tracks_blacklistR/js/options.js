@@ -7,6 +7,8 @@ var blacklist = [];
 var $list = $('ul');
 
 
+//TODO: sort alphabetically
+
 loadList(); //init
 function loadList(){
     chrome.storage.sync.get(['list'], function(result){
