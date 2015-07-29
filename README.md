@@ -11,7 +11,7 @@ Enable Tracks again in the extension-options.
 
 <h2>Installation</h2>
 
-Download <b>8tracks_blacklistR.crx</b><br>
+Download <b><a href="https://github.com/BenRichter/8tracks-BlacklistR/blob/master/8tracks_blacklistR.crx?raw=true" target="_blank">8tracks_blacklistR.crx</a></b><br>
 Open Chrome extension <a href="chrome://extensions/" target="_blank">chrome://extensions/</a>
 <p>
   <img src="https://github.com/BenRichter/skip8tracks/blob/master/img-readme/how-to1.jpg" title="open chrome extension"  alt="open chrome extension"/>
