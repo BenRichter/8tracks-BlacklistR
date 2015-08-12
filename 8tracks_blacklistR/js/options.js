@@ -19,7 +19,7 @@ function loadList(){
         }
 
         var blackLength = blacklist[0].length;
-        if(blackLength.length !== 0){
+        if(blackLength.length > 0){
             $list.html("");
 
             for (var i = 0; i < blackLength; i++) {
