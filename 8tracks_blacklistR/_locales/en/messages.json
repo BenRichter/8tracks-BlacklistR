@@ -1,0 +1,10 @@
+{
+  "application_title": {
+    "message": "BlacklistR - 8tracks",
+    "description": "The title of the application, displayed in the web store."
+  },
+  "application_description": {
+    "message": "Adds a Button to the player of 8tracks.com to blacklist bad tracks and always skip these songs in every playlist.",
+    "description":"The description of the application, displayed in the web store."
+  }
+}
