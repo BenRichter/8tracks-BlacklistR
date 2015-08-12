@@ -3,7 +3,7 @@
 //     "sample_setting": "This is how you use Store.js to remember values"
 // });
 
-var blacklist = [];
+var blacklist;
 var $list = $('ul');
 
 
@@ -19,7 +19,8 @@ function loadList(){
         }
 
         var blackLength = blacklist[0].length;
-        if(blackLength.length > 0){
+
+        if(blackLength !== 0){
             $list.html("");
 
             for (var i = 0; i < blackLength; i++) {
@@ -53,9 +54,6 @@ function removeSong(arr_nbr){
         });
 
     });
-
-
-    
 
 }
 
