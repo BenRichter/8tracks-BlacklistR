@@ -1,17 +1,13 @@
 #now_playing a.black {
-    text-decoration: none;
     display: block;
     float: right;
     border: 0 none;
-    margin-left: 5px;
-
+    margin: 0;
     line-height: 12px;
-    font-size: 28px;
-    margin-top: 6px;
+    font-size: 18px;
     color: #999;
-
+    text-decoration: none;
 }
-
 #now_playing a.black:hover {  text-decoration: none; color: #666;}
 #now_playing a.black.active { color: #222; }
 #now_playing a.fav { margin-left: 5px; }
